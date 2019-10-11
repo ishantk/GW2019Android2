@@ -2,8 +2,10 @@ package com.auribises.gw2019android2;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Toast;
 
 // Object of Activity : Android System creates it
@@ -57,5 +59,12 @@ public class MainActivity extends AppCompatActivity { //Inheritance
     protected void onDestroy() {
         super.onDestroy();
         Log.i(TAG,"==onDestroy==");
+    }
+
+    // clickHandler or view can be any name of Your Choice
+    public void clickHandler(View view){
+        // Navigating from One Activity to Other
+        Intent intent = new Intent(MainActivity.this, HomeActivity.class);
+        startActivity(intent);
     }
 }
