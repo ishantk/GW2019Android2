@@ -6,4 +6,5 @@
     <color name="colorBlack">#000000</color>
     <color name="colorWhite">#FFFFFF</color>
     <color name="bgOne">#FFF5D5</color>
+    <color name="bgTwo">#EBFDE2</color>
 </resources>
