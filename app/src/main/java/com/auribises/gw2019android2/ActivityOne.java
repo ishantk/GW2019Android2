@@ -1,13 +1,17 @@
 package com.auribises.gw2019android2;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class ActivityOne extends AppCompatActivity implements View.OnClickListener {
 
@@ -30,6 +34,46 @@ public class ActivityOne extends AppCompatActivity implements View.OnClickListen
 
         btnSubmit.setOnClickListener(this);
 
+    }
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        // Explcit Menu
+
+        /*
+        menu.add(1, 101, 0, "All Songs");
+        menu.add(1, 201, 0, "Artists").setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM);
+        menu.add(1, 301, 0, "Favourites").setIcon(R.drawable.ic_app);*/
+
+        // Implicit Menu
+        getMenuInflater().inflate(R.menu.menu_activity_one, menu);
+
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
+        int id = item.getItemId();
+
+        /*if(id == 101){
+            Toast.makeText(this, "All Songs", Toast.LENGTH_SHORT).show();
+        }*/
+
+        if(id == R.id.allSongs){
+            Toast.makeText(this, "All Songs", Toast.LENGTH_SHORT).show();
+
+            // Explicit Intent
+            //Intent intent = new Intent(ActivityOne.this, AllSongsActivity.class);
+
+            // Implicit Intent
+            Intent intent = new Intent("com.auribises.gw2019android2.allsongsactivity");
+            startActivity(intent);
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
