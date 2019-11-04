@@ -29,7 +29,7 @@ public class ContactsAdapter extends ArrayAdapter<Contact> {
 
     Context context;
     int resource;
-    ArrayList<Contact> objects;
+    ArrayList<Contact> objects, temp;
 
     public ContactsAdapter(Context context, int resource, ArrayList<Contact> objects) {
         super(context, resource, objects);
@@ -37,6 +37,9 @@ public class ContactsAdapter extends ArrayAdapter<Contact> {
         this.context = context;
         this.resource = resource;
         this.objects = objects;
+
+        temp = new ArrayList<>();
+        temp.addAll(objects);
     }
 
 
@@ -50,6 +53,7 @@ public class ContactsAdapter extends ArrayAdapter<Contact> {
 
 
         view = LayoutInflater.from(context).inflate(resource, parent, false);
+
         ImageView imageView = view.findViewById(R.id.imageView);
         TextView txtName = view.findViewById(R.id.textViewName);
         TextView txtPhone = view.findViewById(R.id.textViewPhone);
@@ -61,6 +65,26 @@ public class ContactsAdapter extends ArrayAdapter<Contact> {
 
 
         return view;
+
+    }
+
+    public void filter(String data){
+
+        objects.clear();
+
+        if(data.isEmpty()){
+            objects.addAll(temp);
+        }else{
+
+            for(Contact contact : temp){
+                if(contact.name.toLowerCase().contains(data.toLowerCase()) || contact.phone.contains(data)){
+                    objects.add(contact);
+                }
+            }
+
+        }
+
+        notifyDataSetChanged(); // Refresh the ListView
 
     }
 }

@@ -1,11 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ListView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp"
-    android:id="@+id/listView"
+    android:orientation="vertical"
     tools:context=".MyContactsActivity">
 
-</ListView>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/editTextSearch"
+        android:hint="Search..."
+        android:drawableRight="@android:drawable/ic_menu_search"
+        android:layout_marginBottom="4dp"/>
+
+<!--    <ListView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:padding="16dp"-->
+<!--        android:id="@+id/listView"-->
+<!--        tools:context=".MyContactsActivity">-->
+
+<!--    </ListView>-->
+
+    <GridView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp"
+        android:id="@+id/listView"
+        android:numColumns="2"
+        tools:context=".MyContactsActivity">
+
+    </GridView>
+
+</LinearLayout>
