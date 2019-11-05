@@ -23,7 +23,7 @@ public class SplashActivity extends AppCompatActivity {
         @Override
         public void handleMessage(@NonNull Message msg) {
             if(msg.what == 222){
-                Intent intent = new Intent(SplashActivity.this, ActivityOne.class);
+                Intent intent = new Intent(SplashActivity.this, NewsAPIActivity.class);
                 startActivity(intent);
                 finish();
             }
