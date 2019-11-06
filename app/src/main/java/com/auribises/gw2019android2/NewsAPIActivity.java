@@ -8,16 +8,24 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
+import java.util.ArrayList;
+
+import com.auribises.gw2019android2.model.News;
 
 public class NewsAPIActivity extends AppCompatActivity {
 
     RecyclerView recyclerView;
     StringBuffer jsonResponse;
+
+    ArrayList<News> newsList;
 
     void initViews(){
         recyclerView = findViewById(R.id.recyclerView);
@@ -42,6 +50,38 @@ public class NewsAPIActivity extends AppCompatActivity {
         }
     }*/
 
+
+    void parseJSONResponse(){
+
+        try{
+
+            JSONObject jsonObject = new JSONObject(jsonResponse.toString());
+            String status = jsonObject.getString("status");
+            int total = jsonObject.getInt("totalResults");
+
+            JSONArray jsonArray = jsonObject.getJSONArray("articles");
+
+            newsList = new ArrayList<>();
+
+            //for(int i=0;i<total;i++){
+            for(int i=0;i<jsonArray.length();i++){
+                JSONObject jObj = jsonArray.getJSONObject(i);
+                News news = new News();
+                news.author = jObj.getString("author");
+                news.title = jObj.getString("title");
+                news.description = jObj.getString("description");
+                news.url = jObj.getString("url");
+                news.urlToImage = jObj.getString("urlToImage");
+                newsList.add(news);
+            }
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+    }
+
+    // Nested or Inner Class
     class FetchNewsTask extends AsyncTask{ // Asynchronously | Runs in Background
 
 
@@ -88,6 +128,8 @@ public class NewsAPIActivity extends AppCompatActivity {
 
             Log.i("JSONRESPONSE",jsonResponse.toString());
             Toast.makeText(NewsAPIActivity.this, jsonResponse.toString(), Toast.LENGTH_SHORT).show();
+
+            parseJSONResponse();
 
         }
     }
