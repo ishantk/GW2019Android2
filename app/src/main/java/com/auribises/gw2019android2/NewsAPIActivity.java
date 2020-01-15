@@ -1,6 +1,7 @@
 package com.auribises.gw2019android2;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.AsyncTask;
@@ -26,6 +27,8 @@ public class NewsAPIActivity extends AppCompatActivity {
     StringBuffer jsonResponse;
 
     ArrayList<News> newsList;
+
+    NewsAPIRecyclerAdapter recyclerAdapter;
 
     void initViews(){
         recyclerView = findViewById(R.id.recyclerView);
@@ -74,6 +77,12 @@ public class NewsAPIActivity extends AppCompatActivity {
                 news.urlToImage = jObj.getString("urlToImage");
                 newsList.add(news);
             }
+
+
+            recyclerAdapter = new NewsAPIRecyclerAdapter(this, R.layout.news_list_item, newsList);
+            LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+            recyclerView.setLayoutManager(linearLayoutManager);
+            recyclerView.setAdapter(recyclerAdapter);
 
         }catch (Exception e){
             e.printStackTrace();
