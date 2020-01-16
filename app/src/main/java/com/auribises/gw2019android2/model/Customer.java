@@ -1,6 +1,8 @@
 package com.auribises.gw2019android2.model;
 
-public class Customer {
+import java.io.Serializable;
+
+public class Customer implements Serializable {
 
     public String name;
     public String phone;
@@ -20,10 +22,6 @@ public class Customer {
 
     @Override
     public String toString() {
-        return "Customer{" +
-                "name='" + name + '\'' +
-                ", phone='" + phone + '\'' +
-                ", email='" + email + '\'' +
-                '}';
+        return "Name:"+name+"\n\nPhone:"+phone+"\n\nEmail:"+email;
     }
 }

@@ -9,13 +9,15 @@
         android:roundIcon="@drawable/speaker"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".AddCustomerActivity"></activity>
+        <activity android:name=".AllCustomersActivity"></activity>
+        <activity android:name=".AddCustomerActivity" />
         <activity android:name=".NewsAPIActivity" />
         <activity android:name=".YourContactsActivity" />
         <activity android:name=".MyContactsActivity" />
         <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -35,9 +37,11 @@
         <activity android:name=".MainActivity" />
         <activity android:name=".NewsListActivity" />
     </application>
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
+    <uses-permission android:name="android.permission.CALL_PHONE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
 </manifest>
