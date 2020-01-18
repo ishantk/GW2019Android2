@@ -23,7 +23,7 @@ public class SplashActivity extends AppCompatActivity {
         @Override
         public void handleMessage(@NonNull Message msg) {
             if(msg.what == 222){
-                Intent intent = new Intent(SplashActivity.this, AddCustomerActivity.class);
+                Intent intent = new Intent(SplashActivity.this, FetchLocationActivity.class);
                 startActivity(intent);
                 finish();
             }
